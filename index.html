@@ -6,40 +6,73 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular.min.js"></script>
     <script src="app.js"></script>
-    <style>
+
+    <!--<style>
         .active {
             background-color: red;
         }
-    </style>
+    </style>-->
+
 </head>
 <body>
 
-<div ng-controller="VideosController as last">
+<div class="container">
 
-<div>
-    <button ng-class="{ 'active': last.tab == 1 }" ng-click="last.selectTab(1)">Last Videos</button>
-    <button ng-class="{ 'active': last.tab == 2 }" ng-click="last.selectTab(2)">Favorites</button>
+    <div ng-controller="VideosController as last">
+
+        <ul class="nav nav-tabs" role="tablist">
+            <li role="presentation" class="active">
+                <a href="#last" aria-controls="last" role="tab" data-toggle="tab" ng-class="{ 'active': last.tab == 1 }" ng-click="last.selectTab(1)">Last videos</a>
+            </li>
+            <li role="presentation">
+                <a href="#favorites" aria-controls="favorites" role="tab" data-toggle="tab" ng-class="{ 'active': last.tab == 2 }" ng-click="last.selectTab(2)">Favorites</a>
+            </li>
+        </ul>
+
+        <!--<div>
+            <button ng-class="{ 'active': last.tab == 1 }" ng-click="last.selectTab(1)">Last Videos</button>
+            <button ng-class="{ 'active': last.tab == 2 }" ng-click="last.selectTab(2)">Favorites</button>
+        </div>-->
+
+
+        <div class="tab-content">
+            <div role="tabpanel" class="tab-pane active">
+                <div class="row">
+                    <div ng-repeat="video in last.videos | orderBy:'views'" ng-if="last.tab == 1" class="col-sm-6 col-md-4">
+                        <div class="thumbnail">
+                            <img ng-src="{{video.image}}" alt="">
+                            <h2>{{ video.title }}</h2>
+                            <i ng-show="video.e">E</i>
+                            <strong>{{ video.views | number }}</strong>
+                            <p>{{ video.description | limitTo:10 }}</p>
+                            <button class="btn" ng-show="video.isFavorite">Add to favorites</button>
+                            <!--<button class="btn" ng-hide="video.isFavorite">Add to favorites</button>-->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="tab-content">
+            <div role="tabpanel" class="tab-pane active">
+                <div class="row">
+                    <div ng-repeat="favorite in last.favorites" ng-if="last.tab == 2" class="col-sm-6 col-md-4">
+                        <div class="thumbnail">
+                            <img ng-src="{{favorite.image}}" alt="">
+                            <h2>{{ favorite.title }}</h2>
+                            <i ng-show="favorite.e">E</i>
+                            <strong>{{ favorite.views | number }}</strong>
+                            <p>{{ favorite.description | limitTo:10 }}</p>
+                            <button class="btn" ng-show="favorite.isFavorite">Remove from favorites</button>
+                            <!--<button class="btn" ng-hide="video.isFavorite">Add to favorites</button>-->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
 </div>
-
-    <div ng-repeat="video in last.videos | orderBy:'views'" ng-if="last.tab == 1">
-        <img ng-src="{{video.image}}" alt="">
-        <h2>{{ video.title }}</h2>
-        <i ng-show="video.e">E</i>
-        <strong>{{ video.views | number }}</strong>
-        <p>{{ video.description | limitTo:10 }}</p>
-        <button class="btn" ng-show="!video.isFavorite">Add to favorites</button>
-        <!--<button class="btn" ng-hide="video.isFavorite">Add to favorites</button>-->
-    </div>
-    <div ng-repeat="favorite in last.favorites" ng-if="last.tab == 2">
-        <h2>{{ favorite.title }}</h2>
-        <i ng-show="favorite.e">E</i>
-        <strong>{{ favorite.views | number }}</strong>
-        <p>{{ favorite.description | limitTo:10 }}</p>
-        <button class="btn" ng-show="!favorite.isFavorite">Remove from favorites</button>
-        <!--<button class="btn" ng-hide="video.isFavorite">Add to favorites</button>-->
-    </div>
-</div>
-
 
 </body>
 </html>

@@ -5,6 +5,7 @@ app.controller('VideosController', function () {
     this.selectTab = function (tab) {
         this.tab = tab
     };
+
     this.videos = [{
         image: "https://docs.angularjs.org/img/angularjs-for-header-only.svg",
         title: "Hi1",
@@ -15,14 +16,14 @@ app.controller('VideosController', function () {
     },{
         image: "https://docs.angularjs.org/img/angularjs-for-header-only.svg",
         title: "Hi2",
-        e: false,
+        e: true,
         views: 1044550,
         description: "adsf fgnjj bhv fbfhfv vjfdvj",
-        isFavorite: false
+        isFavorite: true
     },{
         image: "https://docs.angularjs.org/img/angularjs-for-header-only.svg",
         title: "Hi3",
-        e: false,
+        e: true,
         views: 1534267300,
         description: "adsf fgnjjfv ff d f dfejfjf  f df vjfdvj",
         isFavorite: true
