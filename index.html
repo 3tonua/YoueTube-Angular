@@ -45,7 +45,7 @@
                             <i ng-show="video.e">E</i>
                             <strong>{{ video.views | number }}</strong>
                             <p>{{ video.description | limitTo:10 }}</p>
-                            <button class="btn" ng-show="video.isFavorite">Add to favorites</button>
+                            <button class="btn" ng-show="!video.isFavorite">Add to favorites</button>
                             <!--<button class="btn" ng-hide="video.isFavorite">Add to favorites</button>-->
                         </div>
                     </div>

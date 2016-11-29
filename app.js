@@ -12,14 +12,14 @@ app.controller('VideosController', function () {
         e: true,
         views: 100025,
         description: "adsf fgnjjfv vjfdvj",
-        isFavorite: true
+        isFavorite: false
     },{
         image: "https://docs.angularjs.org/img/angularjs-for-header-only.svg",
         title: "Hi2",
         e: true,
         views: 1044550,
         description: "adsf fgnjj bhv fbfhfv vjfdvj",
-        isFavorite: true
+        isFavorite: false
     },{
         image: "https://docs.angularjs.org/img/angularjs-for-header-only.svg",
         title: "Hi3",
