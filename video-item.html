@@ -1,0 +1,13 @@
+
+<div class="col-sm-6 col-md-4">
+    <div class="thumbnail">
+        <img ng-src="{{ video.image }}" alt="">
+        <h2>{{ video.title }}</h2>
+        <i ng-show="video.e">E</i>
+        <strong>{{ video.views | number }}</strong>
+        <p>{{ video.description | limitTo:150 }}</p>
+        <button class="btn" ng-show="!video.isFavorite">Add to favorites</button>
+        <button class="btn" ng-hide="!video.isFavorite">Remove</button>
+        <!--<button class="btn" ng-hide="video.isFavorite">Add to favorites</button>-->
+    </div>
+</div>
