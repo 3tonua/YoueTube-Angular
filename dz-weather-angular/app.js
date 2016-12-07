@@ -2,14 +2,48 @@ var app = angular.module('weather', ['ui.bootstrap']);
 
 app.controller('WeatherController', function ($scope, API) {
 
+    API.getForecastWeather().then(function (current) {
+        $scope.current = current;
+    });
+
     API.getForecastWeather().then(function (forecasts) {
         $scope.forecasts = forecasts;
-        console.log(data)
+        // console.log(data)
     });
     
     $scope.current = [];
     
     $scope.forecasts = [];
+
+    $scopeSetting = {
+        query: null,
+        region: 'Odessa Ukraine'
+    };
+
+    $scope.regions = [{
+        name: 'Одесса',
+        value: 'Odessa Ukraine'
+    },{
+        name: 'Kiev',
+        value: 'Kiev'
+    },{
+        name: 'London',
+        value: 'London'
+    },{
+        name: 'Paris',
+        value: 'Paris'
+    },{
+        name: 'New York',
+        value: 'New York'
+    }];
+
+    $scope.searchCity = function () {
+        API.searchCity($scope.searchSetting).then(function (forecasts) {
+            $scope.searched = forecasts;
+            console.log(forecasts);
+        });
+    };
+    $scope.serached = [];
 });
 
 app.directive('forecast', function () {
@@ -26,24 +60,21 @@ app.service('API', function ($http, $q) {
             var d = $q.defer();
             $http({
                 method: 'GET',
-                url: 'http://api.apixu.com/v1/current.json',
+                url: 'http://api.apixu.com/v1/forecast.json',
                 params: {
                     part: "snippet",
                     key: key,
-                    q: "Odesa",
+                    q: "Odessa Ukraine",
                     days: 5
                 }
             }).then(function (data) {
-                var y_forecasts = data.forecast;
-                var my_forecasts = y_forecasts.map(function (forecast, index) {
-                    return {
-                        temp: forecast.forecastday[0].day.maxtemp_c
-                    }
-                });
-                console.log(my_forecasts);
-                d.resolve(my_forecasts)
+                /*console.log(data.data.forecast);
+                console.log(data.data.current);*/
+                console.log(data.data);
+                d.resolve(data)
             });
             return d.promise
         }
     }
 });
+
