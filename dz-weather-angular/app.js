@@ -17,7 +17,7 @@ app.controller('WeatherController', function ($scope, API) {
 
     $scope.Setting = {
         query: null,
-        value: 'Odessa Ukraine'
+        q: 'Odessa Ukraine'
     };
 
     $scope.regions = [{
