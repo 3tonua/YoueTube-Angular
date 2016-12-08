@@ -18,12 +18,12 @@
     <div ng-controller="WeatherController">
 
         <div class="text">
-            <div>
+            <form>
                 <p class="block">{{forecasts.data.location.name + ', ' + forecasts.data.location.country}}</p>
-                <select ng-options="option.value as option.name for option in regions" ng-model="searchSetting.region"></select>
-                <button ng-click="searchCity">Выбрать</button>
+                <p><select ng-options="option.value as option.name for option in regions" ng-model="searchSetting.region"></select>
+                <button ng-click="forecasts()">Выбрать</button></p>
                 <!--<select ng-options="option.value as option.title for option in regions" ng-model="searchSetting.region"></select>-->
-            </div>
+            </form>
             <hr>
             <!--Текущая погода-->
             <div class="text">

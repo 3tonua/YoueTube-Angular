@@ -8,7 +8,6 @@ app.controller('WeatherController', function ($scope, API) {
 
     API.getForecastWeather().then(function (forecasts) {
         $scope.forecasts = forecasts;
-        // console.log(data)
     });
     
     $scope.current = [];
@@ -37,21 +36,22 @@ app.controller('WeatherController', function ($scope, API) {
         value: 'New York'
     }];
 
+
     $scope.searchCity = function () {
         API.searchCity($scope.searchSetting).then(function (forecasts) {
             $scope.searched = forecasts;
             console.log(forecasts);
         });
     };
-    $scope.serached = [];
+    // $scope.searched = [];
 });
 
-app.directive('forecast', function () {
+/*app.directive('forecast', function () {
     return{
         restrict: 'E',
         templateUrl: 'forecast.html'
     }
-});
+});*/
 
 app.service('API', function ($http, $q) {
     return{
@@ -64,7 +64,7 @@ app.service('API', function ($http, $q) {
                 params: {
                     part: "snippet",
                     key: key,
-                    q: "Odessa Ukraine",
+                    q: 'Paris',
                     days: 5
                 }
             }).then(function (data) {
