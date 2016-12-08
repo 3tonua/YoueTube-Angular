@@ -27,8 +27,11 @@ h2{
     /*border-right: white solid;*/
 
 }
+hr{
+    width: 90%;
+}
 .vertical{
     width:1px;
-    height: 100px;
+    height: 150px;
     color: white;
 }

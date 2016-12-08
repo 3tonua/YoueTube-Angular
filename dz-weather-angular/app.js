@@ -15,25 +15,25 @@ app.controller('WeatherController', function ($scope, API) {
     
     $scope.forecasts = [];
 
-    $scopeSetting = {
+    $scope.Setting = {
         query: null,
-        region: 'Odessa Ukraine'
+        value: 'Odessa Ukraine'
     };
 
     $scope.regions = [{
         name: 'Одесса',
         value: 'Odessa Ukraine'
     },{
-        name: 'Kiev',
+        name: 'Киев',
         value: 'Kiev'
     },{
-        name: 'London',
+        name: 'Лондон',
         value: 'London'
     },{
-        name: 'Paris',
+        name: 'Париж',
         value: 'Paris'
     },{
-        name: 'New York',
+        name: 'Нью Йорк',
         value: 'New York'
     }];
 
